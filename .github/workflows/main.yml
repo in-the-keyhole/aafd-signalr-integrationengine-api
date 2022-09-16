@@ -35,3 +35,13 @@ jobs:
             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
             name: aci-aafd-signalr-integrationengine-api
             location: 'west us'
+
+        - name: 'Stop WebApp'
+          uses: Azure/cli@v1
+          with:
+            inlineScript: az webapp stop --name aafdSignalRDEVIntegrationEngineAPI --resource-group aafdSignalRDEV004
+        
+        - name: 'Start WebApp'
+          uses: Azure/cli@v1
+          with:
+            inlineScript: az webapp start --name aafdSignalRDEVIntegrationEngineAPI --resource-group aafdSignalRDEV004
